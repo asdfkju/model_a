@@ -120,7 +120,7 @@ font-size:18px;
 <br>
 <a class="g-signin2" data-onsuccess="onSignIn" style="width:100px"></a>
 <br>
-<a href="/createUserByKakao">
+<a href="/kakao/join/getCode">
 <img src="resources/img/kakao_login_medium_narrow.png">
 </a>
 </div>
@@ -130,13 +130,19 @@ font-size:18px;
 </div>
 </body>
 <script>
+
 function onSignIn(googleUser) {
 	var auth2 = gapi.auth2.getAuthInstance();
 	auth2.disconnect();
 	var profile = googleUser.getBasicProfile();
 	var auth2 = gapi.auth2.getAuthInstance();
-	location.href = "googleApiLogin?googleid=" + profile.getId();
-
+	/*
+	console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+  	console.log('Name: ' + profile.getName());
+ 	console.log('Image URL: ' + profile.getImageUrl());
+ 	console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+	*/
+	location.href = "/google/checkId?google_id=" + profile.getId();
 }
 
 
@@ -173,7 +179,6 @@ function login(){
 			alert("로그인 중 에러 발생");
 		}
 	})
-	
 }
 
 function search(){

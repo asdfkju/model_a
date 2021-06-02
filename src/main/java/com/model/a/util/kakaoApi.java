@@ -18,11 +18,11 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 public class kakaoApi {
 // 카카오 개발자 페이지의 REST API 키 값
-private final static String K_CLIENT_ID = "c4a383bbf5ae503f66665ee5643a233e";
-// 카카오 개발자 페이지에서 로그인 Redirect URI 에 설정한 값
-private final static String K_REDIRECT_URI = "http://localhost:8090/joinKakao";
+private final static String K_CLIENT_ID = "660b2a1f49b6bba77f85c1a4c4e58ec5";
+// 카카오 개발자 페이지에서 로그인 Redirect URI 에 설정한 값 ( 코드값 얻을 주소
+private final static String K_REDIRECT_URI = "http://localhost:8090/kakao/join/getToken";
 
-public static String getAuthorizationUrl(HttpSession session) {
+public static String getAuthorizationUrl() {
     String kakao_url = "https://kauth.kakao.com/oauth/authorize?" + 
                         "client_id=" + K_CLIENT_ID + 
                         "&redirect_uri=" + K_REDIRECT_URI + 

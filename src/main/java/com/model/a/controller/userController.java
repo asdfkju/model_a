@@ -25,14 +25,14 @@ public class userController {
 	}
 	
 	@RequestMapping(value = "/joinForm", method = RequestMethod.GET )
-	public ModelAndView goJoinForm( @RequestParam( "joinType" ) String joinType) {
+	public ModelAndView goJoinForm( @RequestParam( "kind" ) String kind) {
 		mav = new ModelAndView();
-		mav.addObject( "joinType", joinType);
+		mav.addObject( "kind", kind );
 		mav.setViewName( "user/joinForm" );
 		return mav;
 	}
 	
-	@RequestMapping(value = "/choice", method = RequestMethod.GET )
+	@RequestMapping(value = "/choiceJoinType", method = RequestMethod.GET )
 	public String goChoiceJoinType() {
 		return "user/choiceJoinType";
 	}

@@ -23,23 +23,21 @@ public class kakaoService {
 	@Autowired
 	private HttpSession session;
 
-	public ModelAndView kakaoJoin( JsonNode profile ) {
+	public ModelAndView kakaoJoin( String kakao_id ) {
 		mav = new ModelAndView();
-		String id = profile.get( "id" ).asText();
-		int result = kdao.kakaoCheck( id );
+		int result = kdao.kakaoCheck( kakao_id );
 		if( result > 0 ) {
-			userDto user_id = kdao.kakaoLogin( id );
-			session.setAttribute( "id", user_id );
+			userDto user_id = kdao.kakaoLogin( kakao_id );
 			session.setAttribute( "kind", "normal" );
+			session.setAttribute( "id", user_id );
 			mav.setViewName( "redirect:/" );
 			return mav;
 		}
 		else {
 			mav.addObject( "kind", "normal" );
-			mav.addObject( "kakaoid", id );
-			mav.setViewName( "redirect:createKakaoMembers" );
+			mav.addObject( "kakao_id", kakao_id );
+			mav.setViewName( "redirect:/joinForm" );
 			return mav;
 		}
 	}
-	
 }

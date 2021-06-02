@@ -36,7 +36,7 @@ nav {
     </ul>
     <ul class="nav navbar-nav navbar-right">
       <c:if test="${sessionScope.id eq null}">
-      <li><a href="/choice"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
+      <li><a href="/choiceJoinType"><span class="glyphicon glyphicon-user"></span> 회원가입</a></li>
       <li><a href="/loginForm"><span class="glyphicon glyphicon-log-in"></span> 로그인</a></li>
       </c:if>
             <c:if test="${sessionScope.id ne null}">

@@ -18,7 +18,7 @@
     <property name="driverClassName" value="com.mysql.jdbc.Driver"></property>
     <!-- MySQL 버전이 6인 경우 아래 코드 반영 -->
     <!-- <property name="driverClassName" value="com.mysql.cj.jdbc.Driver"></property> -->
-    <property name="url" value="jdbc:mysql://localhost:3306/model_a?serverTimezone=UTC&amp;allowPublicKeyRetrieval=true"></property>
+    <property name="url" value="jdbc:mysql://localhost:3306/model_a?serverTimezone=UTC&amp;allowPublicKeyRetrieval=true&amp;useSSL=false"></property>
     <property name="username" value="user_a"></property>
     <property name="password" value="1234"></property>
 	</bean> 

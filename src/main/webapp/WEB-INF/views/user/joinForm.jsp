@@ -8,6 +8,8 @@
 <title>회원가입</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
+
+console.log("${kakao_id}");
 	function domainselect() {
 		var email = document.getElementById("domainvalue").value;
 		document.getElementById("emaildomain").value = email;
@@ -436,8 +438,10 @@
 </style>
 </head>
 <body>
+<!-- 
 	<jsp:include page="../include/header.jsp"></jsp:include><br>
 	<jsp:include page="../include/nav.jsp"></jsp:include><br>
+ -->
 	<div class="container" id="container2">
 		<div class="col-xs-4">
 		</div>
@@ -446,15 +450,15 @@
 		<div class="col-xs-12">
 					<h1>회원가입</h1>
 					<div style="text-align:right;">
-							<c:choose>
-		<c:when test="${kakaoid ne null}">
-			<button class="btn btn-warning" onclick="joinKakaoMember()">회원가입하기</button>
+	<c:choose>
+		<c:when test="${kakao_id ne null}">
+			<button class="btn btn-warning" onclick="joinKakaoMember()">회원가입하기(카카오)</button>
 		</c:when>
-		<c:when test="${googleid ne null}">
-			<button class="btn" onclick="joinGoogleMember()">회원가입하기</button>
+		<c:when test="${google_id ne null}">
+			<button class="btn" onclick="joinGoogleMember()">회원가입하기(구글)</button>
 		</c:when>
 		<c:otherwise>
-		<button class="btn btn-info" onclick="joinMember()">회원가입하기</button>
+		<button class="btn btn-info" onclick="joinMember()">회원가입하기(일반)</button>
 		</c:otherwise>
 	</c:choose>
 					
@@ -463,22 +467,22 @@
 	<br>
 	<form id="form" enctype="multipart/form-data">
 				<c:choose>
-				<c:when test="${kakaoid ne null}">
+				<c:when test="${kakao_id ne null}">
 				<div class="form-group">
 						아이디<br> 
 		<input class="form-control" type="text" id="id" name="id" onkeyup="checkID()"><br>
 		<span id="checkID"></span><br> 
 		<input type="hidden" id="checkIDResult">
-<input type="hidden" name="kakaoid" id="kakaoid" value="${kakaoid}">	
+<input type="hidden" name="kakaoid" id="kakaoid" value="${kakao_id}">	
 				</div>
 				</c:when>
-				<c:when test="${googleid ne null}">
+				<c:when test="${google_id ne null}">
 												<div class="form-group">
 										아이디<br> 
 		<input type="text"  class="form-control" id="id" name="id" onkeyup="checkID()"><br>
 		<span id="checkID"></span><br> 
 		<input type="hidden" id="checkIDResult">
-<input type="hidden" name="googleid" id="googleid" value="${googleid}">
+<input type="hidden" name="googleid" id="googleid" value="${google_id}">
 								
 								</div>
 				</c:when>
@@ -547,7 +551,7 @@
 		프로필 사진 설정
 			
 			<img id="picPreview" src="#" alt="your image"
-				onError="this.src='resources/img/default.png'" />
+				onError="src='${webappRoot}/resources//img/default.png'" />
 			<br>
 			<br>
 			<input type="file" name="pic" id="pic" onchange="readURL(this);">

@@ -12,4 +12,6 @@ public class userDto {
 	private String profile_img;
 	private String kind; 
 	private String is_reported;
+	private String kakao_id;
+	private String google_id;
 }
